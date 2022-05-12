@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
+            'id' => '9f0d34f7-9f9e-4f3c-b067-8a50bff6a67d',
             'name' => 'Admin',
             'email' => 'admin@kemenkopukm.go.id',
             'email_verified_at' => now(),

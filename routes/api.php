@@ -5,6 +5,8 @@ use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
 use App\Http\Controllers\API\Params\ParamsController;
+use App\Http\Controllers\API\User\GetUserController;
+use App\Http\Controllers\API\User\UpdateUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +39,10 @@ Route::middleware('auth:api')->group(function() {
         Route::get('auth/user', UserController::class);
         Route::delete('auth/logout', LogoutController::class);
     // end auth route
+
+    // user route 
+        Route::get('user', [GetUserController::class, 'get']);
+        Route::put('user/update', [UpdateUserController::class, 'update']);
+        Route::patch('user/change_password', [UpdateUserController::class, 'change_password']);
+    // end user route
 });
