@@ -24,5 +24,15 @@ class RoleSeeder extends Seeder
             'id' => '100',
             'role' => 'admin'
         ]);
+
+        Role::create([
+            'id' => '101',
+            'role' => 'hks'
+        ]);
+
+        Role::create([
+            'id' => '102',
+            'role' => 'general'
+        ]);
     }
 }
