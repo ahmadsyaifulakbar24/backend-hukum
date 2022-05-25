@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
@@ -18,4 +19,13 @@ class File extends Model
     ];
 
     public $timestamps = false;
+
+    protected $appends = [
+        'file_url'
+    ];
+
+    public function getFileUrlAttribute()
+    {
+        return !empty($this->attributes['file']) ? url('') . Storage::url($this->attributes['file']) : null;
+    }
 }
