@@ -4,7 +4,9 @@ use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
+use App\Http\Controllers\API\LegalProduct\CreateLegalProductController;
 use App\Http\Controllers\API\Params\ParamsController;
+use App\Http\Controllers\API\ServiceCategory\ServiceCategoryController;
 use App\Http\Controllers\API\User\GetUserController;
 use App\Http\Controllers\API\User\UpdateUserController;
 use Illuminate\Http\Request;
@@ -45,4 +47,16 @@ Route::middleware('auth:api')->group(function() {
         Route::put('user/update', [UpdateUserController::class, 'update']);
         Route::patch('user/change_password', [UpdateUserController::class, 'change_password']);
     // end user route
+
+    // param route 
+        Route::get('param/mandate', [ParamsController::class, 'get_mandate']);
+    // end param route 
+
+    // service category
+        Route::get('service_category', [ServiceCategoryController::class, 'get']);
+    // end service category
+
+    // legal product
+        Route::post('legal_product', CreateLegalProductController::class);
+    // end legal product    
 });

@@ -233,5 +233,19 @@ class ParamSeeder extends Seeder
             'category'=>'eselon2',
             'param'=>'Asdep Fasilitasi Hukum dan Konsultasi Usaha',
         ]);
+
+        Param::create( [
+            'id'=>'b41a65a6-547d-4024-b6fb-dca4ad459cc0',
+            'parent_id'=> null,
+            'category'=>'mandate',
+            'param'=>'Delegasi',
+        ]);
+
+        Param::create( [
+            'id'=>'7cbfdbe8-b028-40e7-96be-5161e209fbd1',
+            'parent_id'=> null,
+            'category'=>'mandate',
+            'param'=>'Atribusi',
+        ]);
     }
 }

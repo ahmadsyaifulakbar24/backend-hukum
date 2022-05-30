@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('service_categories', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->enum('type', ['PU', 'IH']);
+            $table->enum('type', ['PUU', 'IH']);
             $table->string('name');
+            $table->integer('order');
         });
     }
 

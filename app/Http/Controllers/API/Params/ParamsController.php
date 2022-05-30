@@ -12,8 +12,7 @@ use Illuminate\Validation\Rule;
 class ParamsController extends Controller
 {
     public function get_eselon1() {
-        $param = Param::where('category', 'eselon1')->get();
-        return ResponseFormatter::success(ParamResource::collection($param), 'get eselon 1 data success');
+        return $this->param_response('eselon1', 'get eselon 1 data success');
     }
 
     public function get_eselon2(Request $request) {
@@ -28,5 +27,16 @@ class ParamsController extends Controller
 
         $param = Param::where('parent_id', $request->eselon1_id)->get();
         return ResponseFormatter::success(ParamResource::collection($param), 'get eselon 2 data success');
+    }
+
+    public function get_mandate()
+    {
+        return $this->param_response('mandate', 'get mandate data success');
+    }
+
+    public function param_response($category, $message)
+    {
+        $param = Param::where('category', $category)->get();
+        return ResponseFormatter::success(ParamResource::collection($param), $message);
     }
 }

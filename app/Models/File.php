@@ -15,7 +15,7 @@ class File extends Model
         'legal_product_id',
         'review_version_id',
         'file',
-        'status'
+        'type'
     ];
 
     public $timestamps = false;
@@ -27,5 +27,10 @@ class File extends Model
     public function getFileUrlAttribute()
     {
         return !empty($this->attributes['file']) ? url('') . Storage::url($this->attributes['file']) : null;
+    }
+
+    public function legel_product()
+    {
+        return $this->belongsTo(LegalProduct::class, 'legel_product_id');
     }
 }

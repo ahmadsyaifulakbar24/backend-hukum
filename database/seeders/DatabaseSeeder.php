@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             ParamSeeder::class,
             UserSeeder::class,
+            ServiceCategorySeeder::class
         ]);
     }
 }

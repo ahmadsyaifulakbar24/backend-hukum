@@ -27,4 +27,24 @@ class LegalProduct extends Model
     public function getUpdatedAtAttribute($date) {
         return Carbon::parse($date)->format('Y-m-d H:i:s');
     }
+
+    public function user_created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function service_category()
+    {
+        return $this->belongsTo(ServiceCategory::class, 'service_category_id');
+    }
+  
+    public function mandate()
+    {
+        return $this->belongsTo(Param::class, 'mandate_id');
+    }
+
+    public function file()
+    {
+        return $this->hasMany(File::class, 'legal_product_id');
+    }
 }

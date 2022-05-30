@@ -13,7 +13,8 @@ class ServiceCategory extends Model
     protected $table = 'service_categories';
     protected $fillable = [
         'type',
-        'name'
+        'name',
+        'order'
     ];
 
     public $timestamps = false;

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignUuid('mandate_id')->nullable()->constrained('params')->onUpdate('cascade');
             $table->date('completion_target');
-            $table->enum('status', ['pending', 'process', 'finish']);
+            $table->enum('status', ['pending', 'process', 'finish'])->default('pending');
             $table->timestamps();
         });
     }

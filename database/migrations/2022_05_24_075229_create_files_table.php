@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignUuid('legal_product_id')->nullable()->constrained('legal_products')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignUuid('review_version_id')->nullable()->constrained('review_versions')->onUpdate('cascade')->onDelete('cascade');
             $table->string('file');
-            $table->string('status');
+            $table->string('type');
         });
     }
 
