@@ -5,6 +5,9 @@ use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
 use App\Http\Controllers\API\LegalProduct\CreateLegalProductController;
+use App\Http\Controllers\API\LegalProduct\DeleteLegalProductController;
+use App\Http\Controllers\API\LegalProduct\GetLegalProductController;
+use App\Http\Controllers\API\LegalProduct\UpdateLegalProductController;
 use App\Http\Controllers\API\Params\ParamsController;
 use App\Http\Controllers\API\ServiceCategory\ServiceCategoryController;
 use App\Http\Controllers\API\User\GetUserController;
@@ -57,6 +60,10 @@ Route::middleware('auth:api')->group(function() {
     // end service category
 
     // legal product
+        Route::get('legal_product', [GetLegalProductController::class, 'get']);
+        Route::get('legal_product/{legal_product:id}', [GetLegalProductController::class, 'show']);
         Route::post('legal_product', CreateLegalProductController::class);
+        Route::patch('legal_product/{legal_product:id}', UpdateLegalProductController::class);
+        Route::delete('legal_product/{legal_product:id}', DeleteLegalProductController::class);
     // end legal product    
 });

@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
         User::create([
             'id' => '963dc995-9d95-4d35-a1d3-c4496624cf1d',
             'name' => 'Nurhilmi',
-            'email' => 'nurhlilmi@kemenkopukm.go.id',
+            'email' => 'nurhilmi@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'General User',
             'password' => Hash::make('12345678'), // password

@@ -17,6 +17,7 @@ class LegalProduct extends Model
         'title',
         'mandate_id',
         'completion_target',
+        'progress',
         'status'
     ];
 

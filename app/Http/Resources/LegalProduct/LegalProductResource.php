@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\LegalProduct;
 
+use App\Http\Resources\Params\ParamResource;
+use App\Http\Resources\ServiceCategory\ServiceCategoryResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LegalProductResource extends JsonResource
@@ -14,6 +16,19 @@ class LegalProductResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'created_by' => [
+                'id' => $this->user_created_by->id,
+                'name' => $this->user_created_by->name,
+            ],
+            'service_category' => new ServiceCategoryResource($this->service_category),
+            'title' => $this->title,
+            'mandate' => new ParamResource($this->mandate),
+            'completion_target' => $this->completion_target,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
     }
 }
