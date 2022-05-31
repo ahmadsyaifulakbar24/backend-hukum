@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
+use App\Http\Controllers\API\File\FileController;
 use App\Http\Controllers\API\LegalProduct\CreateLegalProductController;
 use App\Http\Controllers\API\LegalProduct\DeleteLegalProductController;
 use App\Http\Controllers\API\LegalProduct\GetLegalProductController;
@@ -66,4 +67,9 @@ Route::middleware('auth:api')->group(function() {
         Route::patch('legal_product/{legal_product:id}', UpdateLegalProductController::class);
         Route::delete('legal_product/{legal_product:id}', DeleteLegalProductController::class);
     // end legal product    
+
+    // file
+        Route::post('file', [FileController::class, 'create']);
+        Route::delete('file/{file:id}', [FileController::class, 'delete']);
+    // end file
 });
