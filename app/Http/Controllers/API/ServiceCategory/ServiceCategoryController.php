@@ -24,4 +24,9 @@ class ServiceCategoryController extends Controller
 
         return ResponseFormatter::success(ServiceCategoryResource::collection($service_category->get()), 'success get service category data');
     }
+
+    public function show(ServiceCategory $service_category)
+    {
+        return ResponseFormatter::success(new ServiceCategoryResource($service_category), 'success get service category data');
+    }
 }

@@ -58,6 +58,7 @@ Route::middleware('auth:api')->group(function() {
 
     // service category
         Route::get('service_category', [ServiceCategoryController::class, 'get']);
+        Route::get('service_category/{service_category:id}', [ServiceCategoryController::class, 'show']);
     // end service category
 
     // legal product
