@@ -25,4 +25,14 @@ class Review extends Model
     public function getUpdatedAtAttribute($date) {
         return Carbon::parse($date)->format('Y-m-d H:i:s');
     }
+
+    public function legal_product()
+    {
+        return $this->belongsTo(LegalProduct::class, 'legal_product_id');
+    }
+
+    public function review_version()
+    {
+        return $this->hasMany(ReviewVersion::class, 'review_id');
+    }
 }

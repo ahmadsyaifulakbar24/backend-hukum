@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\Assignment\CreateAssignmentController;
+use App\Http\Controllers\API\Assignment\DeleteAssignmentController;
+use App\Http\Controllers\API\Assignment\GetAssignmentController;
 use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
@@ -10,6 +13,10 @@ use App\Http\Controllers\API\LegalProduct\DeleteLegalProductController;
 use App\Http\Controllers\API\LegalProduct\GetLegalProductController;
 use App\Http\Controllers\API\LegalProduct\UpdateLegalProductController;
 use App\Http\Controllers\API\Params\ParamsController;
+use App\Http\Controllers\API\Review\CreateReviewController;
+use App\Http\Controllers\API\Review\DeleteReviewController;
+use App\Http\Controllers\API\Review\GetReviewController;
+use App\Http\Controllers\API\Review\UpdateReviewController;
 use App\Http\Controllers\API\ServiceCategory\ServiceCategoryController;
 use App\Http\Controllers\API\User\GetUserController;
 use App\Http\Controllers\API\User\UpdateUserController;
@@ -73,4 +80,20 @@ Route::middleware('auth:api')->group(function() {
         Route::post('file', [FileController::class, 'create']);
         Route::delete('file/{file:id}', [FileController::class, 'delete']);
     // end file
+
+    // assignment
+        Route::post('assignment', CreateAssignmentController::class);
+        Route::get('assignment', [GetAssignmentController::class, 'get']);
+        Route::get('assignment/{assignment:id}', [GetAssignmentController::class, 'show']);
+        Route::delete('assignment/{assignment:id}', DeleteAssignmentController::class);
+    // end assigment
+
+    // review
+        Route::get('review', [GetReviewController::class, 'get']);
+        Route::get('review/{review:id}', [GetReviewController::class, 'show']);
+        Route::post('review', [CreateReviewController::class, 'create']);
+        Route::patch('review/{review:id}', [UpdateReviewController::class, 'update']);
+        Route::delete('review/{review:id}', [DeleteReviewController::class, 'delete']);
+        Route::patch('review/{review:id}/progress/', [UpdateReviewController::class, 'progress']);
+    // end review
 });

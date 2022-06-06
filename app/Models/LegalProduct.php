@@ -48,4 +48,9 @@ class LegalProduct extends Model
     {
         return $this->hasMany(File::class, 'legal_product_id');
     }
+
+    public function assignment()
+    {
+        return $this->hasMany(Assignment::class, 'legal_product_id');
+    }
 }

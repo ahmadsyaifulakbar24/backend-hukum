@@ -53,7 +53,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'path_photo'
+        'photo_url'
     ];
 
     public function getCreatedAtAttribute($date) {
@@ -64,7 +64,7 @@ class User extends Authenticatable
         return Carbon::parse($date)->format('Y-m-d H:i:s');
     }
 
-    public function getPathPhotoAttribute()
+    public function getPhotoUrlAttribute()
     {
         return !empty($this->attributes['photo']) ? url('') . Storage::url($this->attributes['photo']) : null;
     }
