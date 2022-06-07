@@ -18,6 +18,9 @@ use App\Http\Controllers\API\Review\DeleteReviewController;
 use App\Http\Controllers\API\Review\GetReviewController;
 use App\Http\Controllers\API\Review\UpdateReviewController;
 use App\Http\Controllers\API\Review\Version\CreateReviewVersionController;
+use App\Http\Controllers\API\Review\Version\DeleteReviewVersionController;
+use App\Http\Controllers\API\Review\Version\GetReviewVersionController;
+use App\Http\Controllers\API\Review\Version\UpdateReviewVersionController;
 use App\Http\Controllers\API\ServiceCategory\ServiceCategoryController;
 use App\Http\Controllers\API\User\GetUserController;
 use App\Http\Controllers\API\User\UpdateUserController;
@@ -101,5 +104,9 @@ Route::middleware('auth:api')->group(function() {
 
     // review version
         Route::post('review_version', CreateReviewVersionController::class);
+        Route::get('review_version', [GetReviewVersionController::class, 'get']);
+        Route::get('review_version/{review_version:id}', [GetReviewVersionController::class, 'show']);
+        Route::delete('review_version/{review_version:id}', DeleteReviewVersionController::class);
+        Route::put('review_version/{review_version:id}', [UpdateReviewVersionController::class, 'update']);
     // end review version
 });

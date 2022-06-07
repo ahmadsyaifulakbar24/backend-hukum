@@ -25,7 +25,7 @@ class FileController extends Controller
                 'exists:review_versions,id'
             ],
             'file' => ['required', 'file'],
-            'type' => ['required', 'in:urgency_script,official_memo,draft,sk_team']
+            'type' => ['required', 'in:urgency_script,official_memo,draft,sk_team,review_verison_note']
         ]);
 
         $input = $request->except(['file']);
