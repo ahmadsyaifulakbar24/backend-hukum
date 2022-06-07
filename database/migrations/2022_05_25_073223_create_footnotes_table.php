@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('footnotes', function (Blueprint $table) {
-            $table->uuid()->primary();
-            $table->foreignUuid('review_version_id')->constrained('review_versions')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignUuid('finalization_id')->constrained('finalizations')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignUuid('determination_id')->constrained('determinations')->onUpdate('cascade')->onDelete('cascade');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('review_version_id')->nullable()->constrained('review_versions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('finalization_id')->nullable()->constrained('finalizations')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('determination_id')->nullable()->constrained('determinations')->onUpdate('cascade')->onDelete('cascade');
             $table->string('note');
         });
     }

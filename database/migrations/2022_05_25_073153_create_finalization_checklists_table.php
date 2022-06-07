@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('finalization_checklists', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->foreignUuid('finalization_id')->constrained('finalizations')->onUpdate('cascade')->onDelete('cascade');
             $table->string('checklist');
         });

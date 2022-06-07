@@ -36,4 +36,19 @@ class ReviewVersion extends Model
     {
         return !empty($this->attributes['file']) ? url('') . Storage::url($this->attributes['file']) : null;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function footnote()
+    {
+        return $this->hasMany(Footnote::class, 'review_version_id');
+    }
+
+    public function note()
+    {
+        return $this->hasMany(File::class, 'review_version_id');
+    }
 }

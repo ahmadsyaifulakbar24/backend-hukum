@@ -11,7 +11,7 @@ use Illuminate\Validation\Rule;
 
 class UpdateLegalProductController extends Controller
 {
-    public function __invoke(Request $request, LegalProduct $legal_product)
+    public function update(Request $request, LegalProduct $legal_product)
     {
         $request->validate([
             'title' => ['required', 'string'],
@@ -26,5 +26,15 @@ class UpdateLegalProductController extends Controller
 
         $legal_product->update($request->all());
         return ResponseFormatter::success(new LegalProductDetailResource($legal_product), 'success update legal product data');
+    }
+
+    public function status(Request $request, LegalProduct $legal_product)
+    {
+        $request->validate([
+            'status' => ['required', 'in:pending,process,finish,canceled']
+        ]);
+
+        $legal_product->update(['status' => $request->status]);
+        return ResponseFormatter::success(new LegalProductDetailResource($legal_product), 'success update status legal product data');
     }
 }

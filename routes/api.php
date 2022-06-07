@@ -17,6 +17,7 @@ use App\Http\Controllers\API\Review\CreateReviewController;
 use App\Http\Controllers\API\Review\DeleteReviewController;
 use App\Http\Controllers\API\Review\GetReviewController;
 use App\Http\Controllers\API\Review\UpdateReviewController;
+use App\Http\Controllers\API\Review\Version\CreateReviewVersionController;
 use App\Http\Controllers\API\ServiceCategory\ServiceCategoryController;
 use App\Http\Controllers\API\User\GetUserController;
 use App\Http\Controllers\API\User\UpdateUserController;
@@ -72,7 +73,8 @@ Route::middleware('auth:api')->group(function() {
         Route::get('legal_product', [GetLegalProductController::class, 'get']);
         Route::get('legal_product/{legal_product:id}', [GetLegalProductController::class, 'show']);
         Route::post('legal_product', CreateLegalProductController::class);
-        Route::patch('legal_product/{legal_product:id}', UpdateLegalProductController::class);
+        Route::patch('legal_product/{legal_product:id}', [UpdateLegalProductController::class, 'update']);
+        Route::patch('legal_product/{legal_product:id}/status', [UpdateLegalProductController::class, 'status']);
         Route::delete('legal_product/{legal_product:id}', DeleteLegalProductController::class);
     // end legal product    
 
@@ -96,4 +98,8 @@ Route::middleware('auth:api')->group(function() {
         Route::delete('review/{review:id}', [DeleteReviewController::class, 'delete']);
         Route::patch('review/{review:id}/progress/', [UpdateReviewController::class, 'progress']);
     // end review
+
+    // review version
+        Route::post('review_version', CreateReviewVersionController::class);
+    // end review version
 });
