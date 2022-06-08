@@ -36,4 +36,14 @@ class Finalization extends Model
     {
         return !empty($this->attributes['file']) ? url('') . Storage::url($this->attributes['file']) : null;
     }
+
+    public function footnote()
+    {
+        return $this->hasMany(Footnote::class, 'finalization_id');
+    }
+
+    public function note()
+    {
+        return $this->hasMany(File::class, 'finalization_id');
+    }
 }

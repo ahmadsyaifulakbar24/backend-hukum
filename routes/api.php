@@ -8,6 +8,7 @@ use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
 use App\Http\Controllers\API\File\FileController;
+use App\Http\Controllers\API\Finalization\CreateFinalizationController;
 use App\Http\Controllers\API\LegalProduct\CreateLegalProductController;
 use App\Http\Controllers\API\LegalProduct\DeleteLegalProductController;
 use App\Http\Controllers\API\LegalProduct\GetLegalProductController;
@@ -109,4 +110,8 @@ Route::middleware('auth:api')->group(function() {
         Route::delete('review_version/{review_version:id}', DeleteReviewVersionController::class);
         Route::put('review_version/{review_version:id}', [UpdateReviewVersionController::class, 'update']);
     // end review version
+
+    // create finalization
+        Route::post('finalization', CreateFinalizationController::class);
+    // end create finalization
 });

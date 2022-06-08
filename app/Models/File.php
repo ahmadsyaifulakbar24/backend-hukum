@@ -14,6 +14,7 @@ class File extends Model
     protected $fillable = [
         'legal_product_id',
         'review_version_id',
+        'finalization_id',
         'file',
         'type'
     ];
