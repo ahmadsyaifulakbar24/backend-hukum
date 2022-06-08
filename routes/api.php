@@ -9,7 +9,9 @@ use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
 use App\Http\Controllers\API\File\FileController;
 use App\Http\Controllers\API\Finalization\CreateFinalizationController;
+use App\Http\Controllers\API\Finalization\DeleteFinalizationController;
 use App\Http\Controllers\API\Finalization\GetFinalizationController;
+use App\Http\Controllers\API\Finalization\UpdateFinalizationController;
 use App\Http\Controllers\API\LegalProduct\CreateLegalProductController;
 use App\Http\Controllers\API\LegalProduct\DeleteLegalProductController;
 use App\Http\Controllers\API\LegalProduct\GetLegalProductController;
@@ -116,5 +118,7 @@ Route::middleware('auth:api')->group(function() {
         Route::post('finalization', CreateFinalizationController::class);
         Route::get('finalization', [GetFinalizationController::class, 'get']);
         Route::get('finalization/{finalization:id}', [GetFinalizationController::class, 'show']);
+        Route::put('finalization/{finalization:id}', [UpdateFinalizationController::class, 'update']);
+        Route::delete('finalization/{finalization:id}', DeleteFinalizationController::class);
     // end create finalization
 });
