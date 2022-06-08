@@ -18,7 +18,16 @@ class CreateFinalizationController extends Controller
         $request->validate([
             'legal_product_id' => ['required', 'exists:legal_products,id'],
             'file' => ['required', 'file'],
-            'type' => ['required', 'in:finalization,original'],
+            'type' => [
+                'required', 
+                'in:finalization,original',
+                Rule::unique('finalizations')->where(function($query) use ($request) {
+                    return $query->where([
+                        ['legal_product_id', $request->legal_product_id],
+                        ['type', $request->type]
+                    ]);
+                })
+            ],
 
             'footnote' => ['nullable', 'array'],
             'footnote.*.note' => ['required_with:footnote', 'string'],
