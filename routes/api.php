@@ -7,6 +7,10 @@ use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
+use App\Http\Controllers\API\Determination\CreateDeterminationController;
+use App\Http\Controllers\API\Determination\DeleteDeterminationController;
+use App\Http\Controllers\API\Determination\GetDeterminationController;
+use App\Http\Controllers\API\Determination\UpdateDeterminationController;
 use App\Http\Controllers\API\File\FileController;
 use App\Http\Controllers\API\Finalization\CreateFinalizationController;
 use App\Http\Controllers\API\Finalization\DeleteFinalizationController;
@@ -114,11 +118,19 @@ Route::middleware('auth:api')->group(function() {
         Route::put('review_version/{review_version:id}', [UpdateReviewVersionController::class, 'update']);
     // end review version
 
-    // create finalization
+    // finalization
         Route::post('finalization', CreateFinalizationController::class);
         Route::get('finalization', [GetFinalizationController::class, 'get']);
         Route::get('finalization/{finalization:id}', [GetFinalizationController::class, 'show']);
         Route::put('finalization/{finalization:id}', [UpdateFinalizationController::class, 'update']);
         Route::delete('finalization/{finalization:id}', DeleteFinalizationController::class);
-    // end create finalization
+    // end finalization
+
+    // determination
+        Route::post('determination', CreateDeterminationController::class);
+        Route::get('determination', [GetDeterminationController::class, 'get']);
+        Route::get('determination/{determination:id}', [GetDeterminationController::class, 'show']);
+        Route::put('determination/{determination:id}', [UpdateDeterminationController::class, 'update']);
+        Route::delete('determination/{determination:id}', DeleteDeterminationController::class);
+    // end determination
 });

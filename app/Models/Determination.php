@@ -36,4 +36,14 @@ class Determination extends Model
     {
         return !empty($this->attributes['file']) ? url('') . Storage::url($this->attributes['file']) : null;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    
+    public function footnote()
+    {
+        return $this->hasMany(Footnote::class, 'determination_id');
+    }
 }

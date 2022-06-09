@@ -42,6 +42,8 @@ class CreateFinalizationController extends Controller
         // create input variable
         $input = $request->except(['file', 'footnote', 'note']);
         $input['file'] = FileHelpers::upload_file('finalization/file', $request->file);
+
+        // create finalization
         $finalization = Finalization::create($input);
 
         // create footnote if exists
