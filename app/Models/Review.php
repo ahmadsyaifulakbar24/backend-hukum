@@ -34,4 +34,9 @@ class Review extends Model
     {
         return $this->hasMany(ReviewVersion::class, 'review_id');
     }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class, 'review_id');
+    }
 }

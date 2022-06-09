@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Assignment;
+namespace App\Http\Resources\Comment;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AssignmentResource extends JsonResource
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,13 +16,15 @@ class AssignmentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'legal_product_id' => $this->legal_product_id,
             'user' => [
                 'name' => $this->user->name,
                 'position' => $this->user->position,
                 'phone_number' => $this->user->phone_number,
                 'photo_url' => $this->user->photo_url,
             ],
+            'review_id' => $this->review_id,
+            'finalization_id' => $this->finalization_id,
+            'comment' => $this->comment,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

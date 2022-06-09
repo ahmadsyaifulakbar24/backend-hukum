@@ -46,4 +46,9 @@ class Finalization extends Model
     {
         return $this->hasMany(File::class, 'finalization_id');
     }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class, 'finalization_id');
+    }
 }

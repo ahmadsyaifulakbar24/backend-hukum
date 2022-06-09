@@ -7,6 +7,9 @@ use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\UserController;
+use App\Http\Controllers\API\Comment\CreateCommentController;
+use App\Http\Controllers\API\Comment\DeleteCommentController;
+use App\Http\Controllers\API\Comment\GetCommentController;
 use App\Http\Controllers\API\Determination\CreateDeterminationController;
 use App\Http\Controllers\API\Determination\DeleteDeterminationController;
 use App\Http\Controllers\API\Determination\GetDeterminationController;
@@ -133,4 +136,10 @@ Route::middleware('auth:api')->group(function() {
         Route::put('determination/{determination:id}', [UpdateDeterminationController::class, 'update']);
         Route::delete('determination/{determination:id}', DeleteDeterminationController::class);
     // end determination
+
+    // comment
+        Route::post('comment', CreateCommentController::class);
+        Route::get('comment', [GetCommentController::class, 'get']);
+        Route::delete('comment/{comment:id}', DeleteCommentController::class);
+    // end comment
 });
