@@ -14,7 +14,6 @@ class Review extends Model
     protected $fillable = [
         'legal_product_id',
         'title',
-        'description',
         'status'
     ];
 

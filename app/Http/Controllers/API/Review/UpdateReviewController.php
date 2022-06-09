@@ -14,10 +14,9 @@ class UpdateReviewController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string'],
-            'description' => ['required', 'string']
         ]);
 
-        $input = $request->only(['title', 'description']);
+        $input = $request->only(['title']);
         $review->update($input);
 
         return ResponseFormatter::success(new ReviewDetailResource($review), 'success update review data');

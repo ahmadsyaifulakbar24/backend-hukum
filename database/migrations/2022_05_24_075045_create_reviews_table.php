@@ -17,7 +17,6 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('legal_product_id')->constrained('legal_products')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
-            $table->text('description');
             $table->integer('status')->default('0');
             $table->timestamps();
         });

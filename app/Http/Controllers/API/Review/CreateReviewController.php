@@ -15,7 +15,6 @@ class CreateReviewController extends Controller
         $request->validate([
             'legal_product_id' => ['required', 'exists:legal_products,id'],
             'title' => ['required', 'string'],
-            'description' => ['required', 'string']
         ]);
 
         $review = Review::create($request->all());

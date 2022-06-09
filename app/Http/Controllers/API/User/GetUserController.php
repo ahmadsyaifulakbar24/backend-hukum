@@ -15,7 +15,7 @@ class GetUserController extends Controller
     {
         $request->validate([
             'id' => ['nullable', 'exists:users,id'],
-            'role' => ['nullable', 'in:admin']
+            'role' => ['nullable', 'in:super_admin,admin,general,hks']
         ]);
 
         $message = 'get user data success';

@@ -16,12 +16,21 @@ class GetLegalProductController extends Controller
     {
         $request->validate([
             'created_by' => ['nullable', 'exists:users,id'],
+            'assignment_id' => ['nullable', 'exists:users,id'],
             'search' => ['nullable', 'string'],
             'limit_page' => ['nullable', 'int']
         ]);
 
         $limit_page = $request->input('limit_page', 10);
         $legal_product = LegalProduct::query();
+
+
+        if($request->assignment_id)
+        {
+            $legal_product->whereHas('assignment', function($query) use ($request) {
+                return $query->where('user_id', $request->assignment_id);
+            });
+        }
 
         if($request->user_id) {
             $legal_product->where('created_by', $request->created_by);

@@ -27,6 +27,7 @@ class LegalProductDetailResource extends JsonResource
             'title' => $this->title,
             'mandate' => new ParamResource($this->mandate),
             'completion_target' => $this->completion_target,
+            'progress' => $this->progress,
             'status' => $this->status,
             'urgency_script' => FileResource::collection($this->file()->where('type', 'urgency_script')->get()),
             'official_memo' => FileResource::collection($this->file()->where('type', 'official_memo')->get()),

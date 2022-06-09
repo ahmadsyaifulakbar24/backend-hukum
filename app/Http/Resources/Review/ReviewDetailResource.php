@@ -18,7 +18,6 @@ class ReviewDetailResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
             'legal_product' => new LegalProductDetailResource($this->legal_product),
             'status' => $this->status,
             'created_at' => $this->created_at,

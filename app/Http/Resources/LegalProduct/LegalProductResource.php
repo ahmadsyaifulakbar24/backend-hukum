@@ -26,6 +26,7 @@ class LegalProductResource extends JsonResource
             'title' => $this->title,
             'mandate' => new ParamResource($this->mandate),
             'completion_target' => $this->completion_target,
+            'progress' => $this->progress,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
