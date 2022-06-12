@@ -53,6 +53,12 @@ class CreateReviewVersionController extends Controller
         }
         $review_version->note()->createMany($notes);
 
+        // create history
+        $review_version->history()->create([
+            'user_id' => $user_id,
+            'type' => 'create_review_version'
+        ]);
+        
         // response
         return ResponseFormatter::success(new ReviewVersionResource($review_version));
     }

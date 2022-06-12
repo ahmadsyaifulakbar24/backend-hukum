@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignUuid('review_id')->constrained('reviews')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('review_version_id')->constrained('review_versions')->onUpdate('cascade')->onDelete('cascade');
             $table->string('type');
             $table->timestamps();
         });

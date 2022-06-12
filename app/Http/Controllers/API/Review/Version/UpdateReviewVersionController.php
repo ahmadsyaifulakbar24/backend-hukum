@@ -49,6 +49,12 @@ class UpdateReviewVersionController extends Controller
             
         }
 
+        // create history 
+        $review_version->history()->create([
+            'user_id' => $request->user()->id,
+            'type' => 'update_review_version'
+        ]);
+
         // response
         return ResponseFormatter::success(new ReviewVersionResource($review_version));
     }

@@ -51,4 +51,9 @@ class ReviewVersion extends Model
     {
         return $this->hasMany(File::class, 'review_version_id');
     }
+
+    public function history()
+    {
+        return $this->hasMany(History::class, 'review_version_id');
+    }
 }

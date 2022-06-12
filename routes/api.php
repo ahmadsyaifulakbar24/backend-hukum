@@ -19,6 +19,7 @@ use App\Http\Controllers\API\Finalization\CreateFinalizationController;
 use App\Http\Controllers\API\Finalization\DeleteFinalizationController;
 use App\Http\Controllers\API\Finalization\GetFinalizationController;
 use App\Http\Controllers\API\Finalization\UpdateFinalizationController;
+use App\Http\Controllers\API\History\GetHistoryController;
 use App\Http\Controllers\API\LegalProduct\CreateLegalProductController;
 use App\Http\Controllers\API\LegalProduct\DeleteLegalProductController;
 use App\Http\Controllers\API\LegalProduct\GetLegalProductController;
@@ -142,4 +143,9 @@ Route::middleware('auth:api')->group(function() {
         Route::get('comment', [GetCommentController::class, 'get']);
         Route::delete('comment/{comment:id}', DeleteCommentController::class);
     // end comment
+
+    // history
+        Route::get('history', [GetHistoryController::class, 'get']);
+        Route::get('history/{history:id}', [GetHistoryController::class, 'show']);
+    // end history
 });
