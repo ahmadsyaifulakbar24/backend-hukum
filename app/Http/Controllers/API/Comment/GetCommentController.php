@@ -32,9 +32,9 @@ class GetCommentController extends Controller
             $result = $review->comment;
         } else if($request->type == 'finalization') {
             $legal_product = LegalProduct::find($request->legal_product_id);
-            $result = $legal_product->comment()->where('type', $request->type)->get();
+            $result = $legal_product->comment()->where('type', $request->type);
         }
 
-        return ResponseFormatter::success(CommentResource::collection($result), 'success get comment data');
+        return ResponseFormatter::success(CommentResource::collection($result->orderBy('created_at', 'DESC')->get()), 'success get comment data');
     }
 }

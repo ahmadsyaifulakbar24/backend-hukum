@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\User;
 
+use App\Http\Resources\Params\ParamResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -14,6 +15,19 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'nip' => $this->nip,
+            'email' => $this->email,
+            'phone_number' => $this->phone_number,
+            'eselon1' => new ParamResource($this->eselon1),
+            'eselon2' => new ParamResource($this->eselon2),
+            'position' => $this->position,
+            'role' => $this->role,
+            'photo_url' => $this->photo_url,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
+        ];
     }
 }

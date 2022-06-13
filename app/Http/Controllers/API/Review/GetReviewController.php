@@ -20,7 +20,7 @@ class GetReviewController extends Controller
 
         $limit_page = $request->input('limit_page', 10);
 
-        $review = Review::where('legal_product_id', $request->legal_product_id);
+        $review = Review::where('legal_product_id', $request->legal_product_id)->orderBy('created_at', 'DESC');
 
         return ResponseFormatter::success(ReviewResource::collection($review->paginate($limit_page))->response()->getData(true), 'success get review data');
     }

@@ -18,6 +18,7 @@ class AssignmentResource extends JsonResource
             'id' => $this->id,
             'legal_product_id' => $this->legal_product_id,
             'user' => [
+                'id' => $this->user->id,
                 'name' => $this->user->name,
                 'position' => $this->user->position,
                 'phone_number' => $this->user->phone_number,

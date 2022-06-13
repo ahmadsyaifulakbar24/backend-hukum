@@ -41,6 +41,8 @@ class GetLegalProductController extends Controller
             $legal_product->where('title', $request->search);
         }
 
+        $legal_product->orderBy('created_at', 'DESC');
+
         return ResponseFormatter::success(LegalProductResource::collection($legal_product->paginate($limit_page))->response()->getData(true), 'success get legel product data');
     }
 

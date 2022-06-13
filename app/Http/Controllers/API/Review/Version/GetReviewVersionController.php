@@ -16,7 +16,7 @@ class GetReviewVersionController extends Controller
             'review_id' => ['required', 'exists:reviews,id'],
         ]);
 
-        $review_version = ReviewVersion::where('review_id', $request->review_id)->get();
+        $review_version = ReviewVersion::where('review_id', $request->review_id)->orderBy('created_at', 'DESC')->get();
         return ResponseFormatter::success(ReviewVersionResource::collection($review_version), 'success get review version data');
     }
 

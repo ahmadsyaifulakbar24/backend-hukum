@@ -22,6 +22,9 @@ class ReviewVersionResource extends JsonResource
             'user' => [
                 'id' => $this->user->id,
                 'name' => $this->user->name,
+                'position' => $this->user->position,
+                'phone_number' => $this->user->phone_number,
+                'photo_url' => $this->user->photo_url,
             ],
             'version_name' => $this->version_name,
             'file_url' => $this->file_url,
