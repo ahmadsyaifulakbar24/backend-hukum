@@ -28,6 +28,7 @@ class LegalProductResource extends JsonResource
             'completion_target' => $this->completion_target,
             'progress' => $this->progress,
             'status' => $this->status,
+            'finish_date' => $this->finish_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

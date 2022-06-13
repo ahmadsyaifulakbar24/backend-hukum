@@ -18,7 +18,10 @@ class LegalProduct extends Model
         'mandate_id',
         'completion_target',
         'progress',
-        'status'
+        'status',
+        'finish_date',
+        'finalization_progress',
+        'finalization_finish_date'
     ];
 
     public function getCreatedAtAttribute($date) {
@@ -26,7 +29,15 @@ class LegalProduct extends Model
     }
 
     public function getUpdatedAtAttribute($date) {
-        return Carbon::parse($date)->format('Y-m-d H:i:s');
+        return !empty($this->attributes['updated_at']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function getFinishDateAttribute($date) {
+        return !empty($this->attributes['finish_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function getFinalizationFinishDateAttribute($date) {
+        return !empty($this->attributes['finalization_finish_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
     }
 
     public function user_created_by()

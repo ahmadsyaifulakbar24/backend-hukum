@@ -22,6 +22,9 @@ return new class extends Migration
             $table->date('completion_target');
             $table->integer('progress')->default(0);
             $table->enum('status', ['pending', 'process', 'finish', 'canceled'])->default('pending');
+            $table->date('finish_date')->nullable();
+            $table->integer('finalization_progress')->default(0);
+            $table->date('finalization_finish_date')->nullable();
             $table->timestamps();
         });
     }

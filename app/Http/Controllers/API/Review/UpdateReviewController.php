@@ -6,6 +6,7 @@ use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Review\ReviewDetailResource;
 use App\Models\Review;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UpdateReviewController extends Controller
@@ -28,7 +29,9 @@ class UpdateReviewController extends Controller
             'status' => ['required', 'integer', 'max:100']
         ]);
 
-        $review->update($request->only('status'));
+        $input = $request->only(['status']);
+        $input['finish_date'] = ($request->status == '100') ? Carbon::now() : null;
+        $review->update($input);
         return ResponseFormatter::success(new ReviewDetailResource($review), 'success update review progress data');
     }
 

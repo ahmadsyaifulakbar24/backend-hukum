@@ -29,12 +29,17 @@ class Finalization extends Model
     }
 
     public function getUpdatedAtAttribute($date) {
-        return Carbon::parse($date)->format('Y-m-d H:i:s');
+        return !empty($this->attributes['updated_at']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
     }
 
     public function getFileUrlAttribute()
     {
         return !empty($this->attributes['file']) ? url('') . Storage::url($this->attributes['file']) : null;
+    }
+
+    public function legal_product()
+    {
+        return $this->belongsTo(LegalProduct::class, 'legal_product_id');
     }
 
     public function footnote()

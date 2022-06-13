@@ -24,7 +24,7 @@ class Comment extends Model
     }
 
     public function getUpdatedAtAttribute($date) {
-        return Carbon::parse($date)->format('Y-m-d H:i:s');
+        return !empty($this->attributes['updated_at']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
     }
 
     public function user()

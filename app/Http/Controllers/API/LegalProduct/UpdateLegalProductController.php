@@ -6,6 +6,7 @@ use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LegalProduct\LegalProductDetailResource;
 use App\Models\LegalProduct;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -33,8 +34,22 @@ class UpdateLegalProductController extends Controller
         $request->validate([
             'status' => ['required', 'in:pending,process,finish,canceled']
         ]);
-
-        $legal_product->update(['status' => $request->status]);
+        $input = $request->only(['status']);
+        $input['finish_date'] = ($request->status == 'finish') ? Carbon::now() : null;
+        
+        $legal_product->update($input);
         return ResponseFormatter::success(new LegalProductDetailResource($legal_product), 'success update status legal product data');
     }
+
+    public function finalization_progress(Request $request, LegalProduct $legal_product)
+    {
+        $request->validate([
+            'finalization_progress' => ['required', 'integer', 'max:100']
+        ]);
+
+        $input = $request->only(['finalization_progress']);
+        $input['finalization_finish_date'] = ($request->finalization_progress == 100) ? Carbon::now() : null;
+        $legal_product->update($input);
+        return ResponseFormatter::success(new LegalProductDetailResource($legal_product), 'success update legal product data');
+    }    
 }

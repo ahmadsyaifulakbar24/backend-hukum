@@ -14,7 +14,8 @@ class Review extends Model
     protected $fillable = [
         'legal_product_id',
         'title',
-        'status'
+        'status',
+        'finish_date'
     ];
 
     public function getCreatedAtAttribute($date) {
@@ -22,7 +23,11 @@ class Review extends Model
     }
 
     public function getUpdatedAtAttribute($date) {
-        return Carbon::parse($date)->format('Y-m-d H:i:s');
+        return !empty($this->attributes['updated_at']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function getFinishDateAttribute($date) {
+        return !empty($this->attributes['finish_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
     }
 
     public function legal_product()

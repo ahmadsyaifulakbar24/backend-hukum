@@ -91,6 +91,7 @@ Route::middleware('auth:api')->group(function() {
         Route::patch('legal_product/{legal_product:id}', [UpdateLegalProductController::class, 'update']);
         Route::patch('legal_product/{legal_product:id}/status', [UpdateLegalProductController::class, 'status']);
         Route::delete('legal_product/{legal_product:id}', DeleteLegalProductController::class);
+        Route::patch('legal_product/{legal_product:id}/finalization_progress', [UpdateLegalProductController::class, 'finalization_progress']);
     // end legal product    
 
     // file
