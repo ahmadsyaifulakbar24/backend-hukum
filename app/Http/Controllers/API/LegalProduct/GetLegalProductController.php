@@ -6,6 +6,7 @@ use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LegalProduct\LegalProductDetailResource;
 use App\Http\Resources\LegalProduct\LegalProductResource;
+use App\Http\Resources\LegalProduct\StageStatusResource;
 use App\Models\LegalProduct;
 use Http\Message\ResponseFactory;
 use Illuminate\Http\Request;
@@ -49,5 +50,10 @@ class GetLegalProductController extends Controller
     public function show (LegalProduct $legal_product) 
     {
         return ResponseFormatter::success(new LegalProductDetailResource($legal_product), 'success get legal product detail');
+    }
+
+    public function stage_status(Request $request, LegalProduct $legal_product)
+    {
+        return ResponseFormatter::success(new StageStatusResource($legal_product), 'success get stage status data');
     }
 }

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignUuid('legal_product_id')->nullable()->constrained('legal_products')->onUpdate('cascade')->onDelete('cascade');
             $table->string('file');
             $table->enum('type', ['finalization', 'original']);
-            $table->integer('status')->default('0');
             $table->timestamps();
         });
     }

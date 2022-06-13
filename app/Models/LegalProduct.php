@@ -75,6 +75,11 @@ class LegalProduct extends Model
         return $this->hasOne(Determination::class, 'legal_product_id');
     }
 
+    public function finalization()
+    {
+        return $this->hasMany(Finalization::class, 'legal_product_id');
+    }
+
     public function comment()
     {
         return $this->hasMany(Comment::class, 'legal_product_id');

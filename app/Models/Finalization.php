@@ -17,7 +17,6 @@ class Finalization extends Model
         'legal_product_id',
         'file',
         'type',
-        'status'
     ];
 
     protected $appends = [
