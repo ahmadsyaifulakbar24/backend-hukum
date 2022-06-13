@@ -29,7 +29,7 @@ class GetCommentController extends Controller
 
         if($request->type == 'review') {
             $review = Review::find($request->review_id);
-            $result = $review->comment;
+            $result = $review->comment();
         } else if($request->type == 'finalization') {
             $legal_product = LegalProduct::find($request->legal_product_id);
             $result = $legal_product->comment()->where('type', $request->type);
