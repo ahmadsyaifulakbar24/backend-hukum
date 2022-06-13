@@ -15,8 +15,17 @@ class TimelineResource extends JsonResource
      */
     public function toArray($request)
     {
+        $start_date = $this->review()->orderBy('finish_date', 'DESC')->pluck('finish_date')->first();
         return [
-            'review' => ReviewTimelineResource::collection($this->review)
+            'review' => ReviewTimelineResource::collection($this->review),
+            'finalization' => [
+                'start_date' => $start_date,
+                'finish_date' => $this->finalization_finish_date
+            ],
+            'determination' => [
+                'start_date' => $this->finalization_finish_date,
+                'finish_date' => !empty($this->determination->created_at) ? $this->determination->created_at : null,
+            ]
         ];
     }
 }

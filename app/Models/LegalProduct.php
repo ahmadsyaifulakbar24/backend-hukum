@@ -65,6 +65,11 @@ class LegalProduct extends Model
         return $this->hasMany(Assignment::class, 'legal_product_id');
     }
 
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'legal_product_id');
+    }
+
     public function determination()
     {
         return $this->hasOne(Determination::class, 'legal_product_id');
