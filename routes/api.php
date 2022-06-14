@@ -25,6 +25,7 @@ use App\Http\Controllers\API\LegalProduct\DeleteLegalProductController;
 use App\Http\Controllers\API\LegalProduct\GetLegalProductController;
 use App\Http\Controllers\API\LegalProduct\UpdateLegalProductController;
 use App\Http\Controllers\API\Params\ParamsController;
+use App\Http\Controllers\API\Report\StatisticsController;
 use App\Http\Controllers\API\Report\TimelineController;
 use App\Http\Controllers\API\Review\CreateReviewController;
 use App\Http\Controllers\API\Review\DeleteReviewController;
@@ -154,5 +155,7 @@ Route::middleware('auth:api')->group(function() {
 
     // report
         Route::get('report/timeline', [TimelineController::class, 'timeline']);
+        Route::get('report/legal_product_by_month', [StatisticsController::class, 'legal_product_by_month']);
+        Route::get('report/legal_pruduct_by_service_category', [StatisticsController::class, 'legal_pruduct_by_service_category']);
     // end report
 });
