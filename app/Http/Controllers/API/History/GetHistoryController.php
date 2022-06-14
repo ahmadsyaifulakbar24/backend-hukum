@@ -19,7 +19,7 @@ class GetHistoryController extends Controller
         $limit = $request->input('limit', 10);
 
         $history = History::where('review_version_id', $request->review_version_id);
-        $result = $history->paginate($limit);
+        $result = $history->orderBy('created_at', 'DESC')->paginate($limit);
 
         return ResponseFormatter::success(HistoryResource::collection($result)->response()->getData(true), 'success get history data');
     }

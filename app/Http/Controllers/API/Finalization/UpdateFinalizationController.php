@@ -45,6 +45,8 @@ class UpdateFinalizationController extends Controller
                 }
                 $finalization->footnote()->createMany($inputFootnote);
             }
+        } else {
+            $finalization->footnote()->delete();
         }
 
         // response 

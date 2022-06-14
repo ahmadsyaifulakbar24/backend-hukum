@@ -45,6 +45,8 @@ class UpdateDeterminationController extends Controller
                 }
                 $determination->footnote()->createMany($inputFootnote);
             }
+        } else {
+            $determination->footnote()->delete();
         }
 
         // response 

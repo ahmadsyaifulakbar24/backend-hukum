@@ -34,8 +34,7 @@ class UpdateReviewVersionController extends Controller
         $review_version->update($inputReviewVerison);
 
         // update footnote
-        if($request->footnote)
-        {
+        if($request->footnote) {
             $notes = Arr::pluck($request->footnote, 'note');
             $review_version->footnote()->whereNotIn('note', $notes)->delete();
             $exists = $review_version->footnote()->pluck('note')->toArray();
@@ -46,7 +45,8 @@ class UpdateReviewVersionController extends Controller
                 }
                 $review_version->footnote()->createMany($inputFootnote);
             }
-            
+        } else {
+            $review_version->footnote()->delete();
         }
 
         // create history 
