@@ -18,10 +18,14 @@ class GetDeterminationController extends Controller
         ]);
         
         $legal_product = LegalProduct::find($request->legal_product_id);
-        $result = $legal_product->determination()->get();
+        $result = $legal_product->determination;
 
         // response
-        return ResponseFormatter::success(new DeterminationResource($result), 'success get determination data');
+        if(!empty($result)) {
+            return ResponseFormatter::success(new DeterminationResource($result), 'success get determination data');
+        } else {
+            return ResponseFormatter::success(null, 'determination data not found');
+        }
     }
 
     public function show(Determination $determination)
