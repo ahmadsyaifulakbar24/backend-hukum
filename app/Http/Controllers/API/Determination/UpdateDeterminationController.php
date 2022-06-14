@@ -16,7 +16,7 @@ class UpdateDeterminationController extends Controller
     public function update(Request $request, Determination $determination)
     {
         $request->validate([
-            'file' => ['required', 'file'],
+            'file' => ['nullable', 'file'],
 
             'footnote' => ['nullable', 'array'],
             'footnote.*.note' => ['required_with:footnote', 'string'],

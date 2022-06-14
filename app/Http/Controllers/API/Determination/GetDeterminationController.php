@@ -18,7 +18,7 @@ class GetDeterminationController extends Controller
         ]);
         
         $legal_product = LegalProduct::find($request->legal_product_id);
-        $result = $legal_product->determination;
+        $result = $legal_product->determination()->get();
 
         // response
         return ResponseFormatter::success(new DeterminationResource($result), 'success get determination data');
