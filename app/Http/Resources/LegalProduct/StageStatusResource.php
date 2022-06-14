@@ -15,7 +15,7 @@ class StageStatusResource extends JsonResource
     public function toArray($request)
     {
         $review = $this->review();
-        $review_process = round($review->sum('status') / $review->count(), 2);
+        $review_process = ($review->count() != 0) ? round($review->sum('status') / $review->count(), 2) : 0;
         return [
             'legal_product_status' => $this->status,
             'assignment' => ($this->assignment()->count() > 0) ? 100 : null,
