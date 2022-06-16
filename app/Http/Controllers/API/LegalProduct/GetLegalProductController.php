@@ -19,6 +19,7 @@ class GetLegalProductController extends Controller
             'created_by' => ['nullable', 'exists:users,id'],
             'assignment_id' => ['nullable', 'exists:users,id'],
             'search' => ['nullable', 'string'],
+            'year' => ['nullable', 'integer'],
             'limit_page' => ['nullable', 'int']
         ]);
 
@@ -37,9 +38,12 @@ class GetLegalProductController extends Controller
             $legal_product->where('created_by', $request->created_by);
         }
 
-        if($request->search)
-        {
+        if($request->search) {
             $legal_product->where('title', $request->search);
+        }
+
+        if($request->year) {
+            $legal_product->whereYear('finish_date', $request->year);
         }
 
         $legal_product->orderBy('created_at', 'DESC');

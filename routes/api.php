@@ -65,6 +65,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('param/eselon1', [ParamsController::class, 'get_eselon1']);
     Route::get('param/eselon2', [ParamsController::class, 'get_eselon2']);
 // end param route 
+
+// report
+    Route::get('report/legal_product_by_month', [StatisticsController::class, 'legal_product_by_month']);
+    Route::get('report/legal_product_by_service_category', [StatisticsController::class, 'legal_pruduct_by_service_category']);
+// end report      
+
 Route::middleware('auth:api')->group(function() {
     // auth route 
         Route::get('auth/user', UserController::class);
@@ -155,7 +161,5 @@ Route::middleware('auth:api')->group(function() {
 
     // report
         Route::get('report/timeline', [TimelineController::class, 'timeline']);
-        Route::get('report/legal_product_by_month', [StatisticsController::class, 'legal_product_by_month']);
-        Route::get('report/legal_product_by_service_category', [StatisticsController::class, 'legal_pruduct_by_service_category']);
     // end report
-});
+});  
