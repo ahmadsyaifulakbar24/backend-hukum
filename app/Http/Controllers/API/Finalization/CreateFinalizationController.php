@@ -36,7 +36,10 @@ class CreateFinalizationController extends Controller
                 Rule::requiredIf($request->type == 'finalization'), 
                 'array'
             ],
-            'note.*.note' => ['required_with:note', 'file']
+            'note.*.note' => ['required_with:note', 'file'],
+
+            'attachment' => ['nullable', 'array'],
+            'attachment.*.attachment' => ['required_with:attachment', 'file'],
         ]);
 
         // create input variable
@@ -51,6 +54,7 @@ class CreateFinalizationController extends Controller
             $finalization->footnote()->createMany($request->footnote);
         }
 
+        // create note
         if($request->type == 'finalization') {
             foreach($request->note as $note) {
                 $path_note = FileHelpers::upload_file('finalization/note', $note['note']);
@@ -59,8 +63,19 @@ class CreateFinalizationController extends Controller
                     'type' => 'finalization_note'
                 ];
             }
-
             $finalization->note()->createMany($notes);
+        }
+
+        // create attachment
+        if($request->attachment) {
+            foreach($request->attachment as $attachment) {
+                $path_attachment = FileHelpers::upload_file('finalization/attachment', $attachment['attachment']);
+                $attachments[] = [
+                    'file' => $path_attachment,
+                    'type' => 'finalization_attachment'
+                ];
+            }
+            $finalization->note()->createMany($attachments);
         }
 
         return ResponseFormatter::success(new FinalizationResource($finalization), 'success create finalization data');

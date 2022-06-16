@@ -19,12 +19,12 @@ return new class extends Migration
             $table->foreignUuid('service_category_id')->constrained('service_categories')->onUpdate('cascade');
             $table->string('title');
             $table->foreignUuid('mandate_id')->nullable()->constrained('params')->onUpdate('cascade');
-            $table->date('completion_target');
+            $table->dateTime('completion_target');
             $table->integer('progress')->default(0);
             $table->enum('status', ['pending', 'process', 'finish', 'canceled'])->default('pending');
-            $table->date('finish_date')->nullable();
+            $table->dateTime('finish_date')->nullable();
             $table->integer('finalization_progress')->default(0);
-            $table->date('finalization_finish_date')->nullable();
+            $table->dateTime('finalization_finish_date')->nullable();
             $table->timestamps();
         });
     }

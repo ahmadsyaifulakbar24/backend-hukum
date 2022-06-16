@@ -156,6 +156,6 @@ Route::middleware('auth:api')->group(function() {
     // report
         Route::get('report/timeline', [TimelineController::class, 'timeline']);
         Route::get('report/legal_product_by_month', [StatisticsController::class, 'legal_product_by_month']);
-        Route::get('report/legal_pruduct_by_service_category', [StatisticsController::class, 'legal_pruduct_by_service_category']);
+        Route::get('report/legal_product_by_service_category', [StatisticsController::class, 'legal_pruduct_by_service_category']);
     // end report
 });

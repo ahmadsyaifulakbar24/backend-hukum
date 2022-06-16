@@ -33,7 +33,7 @@ class StatisticsController extends Controller
             'type' => ['nullable', 'in:PUU,IH']
         ]);
 
-        $service_category = ServiceCategory::legalProductByMonth('2022');
+        $service_category = ServiceCategory::legalProductByMonth($request->year);
         if($request->type) {
             $service_category->where('type', $request->type);
         }

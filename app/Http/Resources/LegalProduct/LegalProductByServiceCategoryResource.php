@@ -16,6 +16,7 @@ class LegalProductByServiceCategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'name' => $this->name,
             'type' => $this->type,
             'total' => $this->total,
         ];
