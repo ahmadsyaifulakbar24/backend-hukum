@@ -39,7 +39,7 @@ class GetLegalProductController extends Controller
         }
 
         if($request->search) {
-            $legal_product->where('title', $request->search);
+            $legal_product->where('title', 'like', '%'.$request->search.'%');
         }
 
         if($request->year) {
