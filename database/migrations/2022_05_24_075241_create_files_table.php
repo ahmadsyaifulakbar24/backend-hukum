@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignUuid('legal_product_id')->nullable()->constrained('legal_products')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignUuid('review_version_id')->nullable()->constrained('review_versions')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignUuid('finalization_id')->nullable()->constrained('finalizations')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('determination_id')->nullable()->constrained('determinations')->onUpdate('cascade')->onDelete('cascade');
             $table->string('file');
             $table->string('type');
         });

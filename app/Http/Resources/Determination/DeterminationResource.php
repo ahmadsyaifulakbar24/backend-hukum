@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Determination;
 
+use App\Http\Resources\File\FileResource;
 use App\Http\Resources\Footnote\FootnoteResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -27,6 +28,7 @@ class DeterminationResource extends JsonResource
             'legal_product_id' => $this->legal_product_id,
             'file_url' => $this->file_url,
             'footnote' => FootnoteResource::collection($this->footnote),
+            'attachment' => FileResource::collection($this->files),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

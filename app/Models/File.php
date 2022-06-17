@@ -15,6 +15,7 @@ class File extends Model
         'legal_product_id',
         'review_version_id',
         'finalization_id',
+        'determination_id',
         'file',
         'type'
     ];

@@ -21,6 +21,9 @@ class CreateDeterminationController extends Controller
 
             'footnote' => ['nullable', 'array'],
             'footnote.*.note' => ['required_with:footnote', 'string'],
+
+            'attachment' => ['nullable', 'array'],
+            'attachment.*.attachment' => ['required_with:attachment', 'file'],
         ]);
 
         // create determination variable
@@ -35,6 +38,18 @@ class CreateDeterminationController extends Controller
         if($request->footnote)
         {
             $determination->footnote()->createMany($request->footnote);
+        }
+
+        // create attachment
+        if($request->attachment) {
+            foreach($request->attachment as $attachment) {
+                $path_attachment = FileHelpers::upload_file('determination/attachment', $attachment['attachment']);
+                $attachments[] = [
+                    'file' => $path_attachment,
+                    'type' => 'determination_attachment'
+                ];
+            }
+            $determination->files()->createMany($attachments);
         }
 
         return ResponseFormatter::success(new DeterminationResource($determination), 'success get determination data');

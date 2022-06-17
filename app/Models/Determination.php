@@ -46,4 +46,9 @@ class Determination extends Model
     {
         return $this->hasMany(Footnote::class, 'determination_id');
     }
+
+    public function files()
+    {
+        return $this->hasMany(File::class, 'determination_id');
+    }
 }
