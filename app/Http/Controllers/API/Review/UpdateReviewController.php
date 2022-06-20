@@ -30,7 +30,7 @@ class UpdateReviewController extends Controller
         ]);
 
         $input = $request->only(['status']);
-        $input['finish_date'] = ($request->status == '100') ? Carbon::now() : null;
+        $input['finish_date'] = ($request->status == 100) ? Carbon::now() : null;
         $review->update($input);
         return ResponseFormatter::success(new ReviewDetailResource($review), 'success update review progress data');
     }

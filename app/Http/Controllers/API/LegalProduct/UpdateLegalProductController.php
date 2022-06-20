@@ -36,8 +36,12 @@ class UpdateLegalProductController extends Controller
         ]);
         $input = $request->only(['status']);
         $input['finish_date'] = ($request->status == 'finish') ? Carbon::now() : null;
+        if($request->status == 'process' && $legal_product->assignment_start_date == null) {
+            $input['assignment_start_date'] = Carbon::now();
+        }
         
         $legal_product->update($input);
+
         return ResponseFormatter::success(new LegalProductDetailResource($legal_product), 'success update status legal product data');
     }
 
@@ -49,6 +53,9 @@ class UpdateLegalProductController extends Controller
 
         $input = $request->only(['finalization_progress']);
         $input['finalization_finish_date'] = ($request->finalization_progress == 100) ? Carbon::now() : null;
+        if($request->finalization_progress == 100 && $legal_product->determination_start_date == null) {
+            $input['determination_start_date'] = Carbon::now();
+        }
         $legal_product->update($input);
         return ResponseFormatter::success(new LegalProductDetailResource($legal_product), 'success update legal product data');
     }    

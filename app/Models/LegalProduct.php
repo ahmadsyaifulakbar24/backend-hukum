@@ -20,8 +20,11 @@ class LegalProduct extends Model
         'progress',
         'status',
         'finish_date',
+        'assignment_start_date',
         'finalization_progress',
-        'finalization_finish_date'
+        'finalization_start_date',
+        'finalization_finish_date',
+        'determination_start_date',
     ];
 
     public function getCreatedAtAttribute($date) {
@@ -36,8 +39,20 @@ class LegalProduct extends Model
         return !empty($this->attributes['finish_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
     }
 
+    public function getAssignmentStartDateAttribute($date) {
+        return !empty($this->attributes['assignment_start_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function getFinalizationStartDateAttribute($date) {
+        return !empty($this->attributes['finalization_start_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
+    }
+
     public function getFinalizationFinishDateAttribute($date) {
         return !empty($this->attributes['finalization_finish_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function getDeterminationStartDateAttribute($date) {
+        return !empty($this->attributes['determination_start_date']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
     }
 
     public function user_created_by()

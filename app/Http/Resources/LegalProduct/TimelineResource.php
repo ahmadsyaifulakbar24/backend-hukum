@@ -17,14 +17,18 @@ class TimelineResource extends JsonResource
     {
         $start_date = $this->review()->orderBy('finish_date', 'DESC')->pluck('finish_date')->first();
         return [
+            'assignment' => [
+                'start_date' => $this->assignment_start_date,
+                'finish_date' => $this->assignment()->max('created_at'),
+            ],
             'review' => ReviewTimelineResource::collection($this->review),
             'finalization' => [
                 'start_date' => $start_date,
                 'finish_date' => $this->finalization_finish_date
             ],
             'determination' => [
-                'start_date' => $this->finalization_finish_date,
-                'finish_date' => !empty($this->determination->created_at) ? $this->determination->created_at : null,
+                'start_date' => $this->determination_start_date,
+                'finish_date' => !empty($this->determination->updated_at) ? $this->determination->updated_at : null,
             ]
         ];
     }
