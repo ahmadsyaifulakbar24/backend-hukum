@@ -80,6 +80,7 @@ Route::middleware('auth:api')->group(function() {
     // user route 
         Route::get('user', [GetUserController::class, 'get']);
         Route::put('user/update', [UpdateUserController::class, 'update']);
+        Route::put('user/{user:id}/photo_profile', [UpdateUserController::class, 'photo_profile']);
         Route::patch('user/change_password', [UpdateUserController::class, 'change_password']);
     // end user route
 

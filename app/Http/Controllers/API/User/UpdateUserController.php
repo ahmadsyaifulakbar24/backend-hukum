@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\API\User;
 
+use App\Helpers\FileHelpers;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\User\UserDetailResource;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UpdateUserController extends Controller
@@ -68,5 +71,20 @@ class UpdateUserController extends Controller
         ]);
 
         return ResponseFormatter::success(new UserResource($user), 'change password data success');
+    }
+
+    public function photo_profile (Request $request, User $user)
+    {
+        $request->validate([
+            'photo' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:5120']
+        ]);
+
+        if(!empty($user->photo)) {
+            Storage::disk('public')->delete($user->photo);
+        }
+        
+        $input['photo'] = FileHelpers::upload_file('profile', $request->photo);
+        $user->update($input);
+        return ResponseFormatter::success(new UserDetailResource($user), 'success update photo profile data');
     }
 }
