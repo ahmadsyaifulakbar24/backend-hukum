@@ -14,7 +14,7 @@ class DeleteFinalizationController extends Controller
     public function __invoke(Finalization $finalization)
     {        
         // get file on finalization data
-        $files = ($finalization->type == 'finalization') ? $finalization->note()->pluck('file')->toArray() : [];
+        $files = (!empty($finalization->note)) ? $finalization->note()->pluck('file')->toArray() : [];
         $files = Arr::prepend($files, $finalization->file);
 
         // delete file and finalization data
