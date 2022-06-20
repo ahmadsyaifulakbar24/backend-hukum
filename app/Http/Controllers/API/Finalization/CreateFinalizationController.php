@@ -32,9 +32,6 @@ class CreateFinalizationController extends Controller
             'footnote' => ['nullable', 'array'],
             'footnote.*.note' => ['required_with:footnote', 'string'],
 
-            'note' => ['nullable', 'array'],
-            'note.*.note' => ['required_with:note', 'file'],
-
             'attachment' => ['nullable', 'array'],
             'attachment.*.attachment' => ['required_with:attachment', 'file'],
         ]);
@@ -49,18 +46,6 @@ class CreateFinalizationController extends Controller
         // create footnote if exists
         if($request->footnote) {
             $finalization->footnote()->createMany($request->footnote);
-        }
-
-        // create note
-        if($request->type == 'finalization') {
-            foreach($request->note as $note) {
-                $path_note = FileHelpers::upload_file('finalization/note', $note['note']);
-                $notes[] = [
-                    'file' => $path_note,
-                    'type' => 'finalization_note'
-                ];
-            }
-            $finalization->note()->createMany($notes);
         }
 
         // create attachment

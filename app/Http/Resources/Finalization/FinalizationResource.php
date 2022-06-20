@@ -21,7 +21,6 @@ class FinalizationResource extends JsonResource
             'legal_product_id' => $this->legal_product_id,
             'file_url' => $this->file_url,
             'footnote' => FootnoteResource::collection($this->footnote),
-            'note' => FileResource::collection($this->note()->where('type', 'finalization_note')->get()),
             'attachment' => FileResource::collection($this->note()->where('type', 'finalization_attachment')->get()),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
