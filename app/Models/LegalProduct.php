@@ -22,7 +22,6 @@ class LegalProduct extends Model
         'finish_date',
         'assignment_start_date',
         'finalization_progress',
-        'finalization_start_date',
         'finalization_finish_date',
         'determination_start_date',
     ];
