@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'email' => 'superadmin@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'Super Admin',
-            'password' => Hash::make('12345678'), // password
+            'password' => Hash::make('12345678'),
             'role' => 'super_admin',
         ]);
 
@@ -32,20 +32,9 @@ class UserSeeder extends Seeder
             'email' => 'nurhilmi@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'General User',
-            'password' => Hash::make('12345678'), // password
+            'password' => Hash::make('12345678'),
             'role' => 'general',
         ]);
-
-        User::create([
-            'id' => '56098235-be55-44d9-bf99-60fc4bc41af1',
-            'name' => 'Birohks',
-            'email' => 'birohks@kemenkopukm.go.id',
-            'email_verified_at' => now(),
-            'position' => 'Birohks',
-            'password' => Hash::make('12345678'), // password
-            'role' => 'hks',
-        ]);
-
 
         User::create([
             'id' => '503dc9bb-b2ac-420d-ab22-679e66877427',
@@ -53,8 +42,8 @@ class UserSeeder extends Seeder
             'email' => 'metty@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('kabagPUU'), // password
-            'role' => 'hks',
+            'password' => Hash::make('kabagPUU'),
+            'role' => 'super_admin',
         ]);
 
         User::create([
@@ -62,9 +51,9 @@ class UserSeeder extends Seeder
             'name' => 'Istiani Erawati',
             'email' => 'istiani@kemenkopukm.go.id',
             'email_verified_at' => now(),
-            'position' => 'HKS',
-            'password' => Hash::make('kasubagUMKM'), // password
-            'role' => 'hks',
+            'position' => 'Co Super Admin',
+            'password' => Hash::make('kasubagUMKM'),
+            'role' => 'co-superadmin',
         ]);
 
         User::create([
@@ -72,9 +61,9 @@ class UserSeeder extends Seeder
             'name' => 'Feraldi Candra Heraton',
             'email' => 'feraldi@kemenkopukm.go.id',
             'email_verified_at' => now(),
-            'position' => 'HKS',
-            'password' => Hash::make('kasubagKoperasi'), // password
-            'role' => 'hks',
+            'position' => 'Co Super Admin',
+            'password' => Hash::make('kasubagKoperasi'),
+            'role' => 'co-superadmin',
         ]);
 
         User::create([
@@ -83,7 +72,7 @@ class UserSeeder extends Seeder
             'email' => 'kartikasasi@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU1'), // password
+            'password' => Hash::make('perancangPUU1'),
             'role' => 'hks',
         ]);
 
@@ -93,7 +82,7 @@ class UserSeeder extends Seeder
             'email' => 'aulia@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU2'), // password
+            'password' => Hash::make('perancangPUU2'),
             'role' => 'hks',
         ]);
 
@@ -103,17 +92,17 @@ class UserSeeder extends Seeder
             'email' => 'franciska@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU3'), // password
+            'password' => Hash::make('perancangPUU3'),
             'role' => 'hks',
         ]);
 
         User::create([
             'id' => '4c6894ef-85d5-4040-a0d3-f75b3b616d72',
-            'name' => 'Dwi Riawelly Charisma',
-            'email' => 'dwiria@kemenkopukm.go.id',
+            'name' => 'Dwie Riawelly Charisma',
+            'email' => 'dwiecharisma@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU4'), // password
+            'password' => Hash::make('perancangPUU4'),
             'role' => 'hks',
         ]);
 
@@ -123,7 +112,7 @@ class UserSeeder extends Seeder
             'email' => 'elsi@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU5'), // password
+            'password' => Hash::make('perancangPUU5'),
             'role' => 'hks',
         ]);
 
@@ -133,7 +122,7 @@ class UserSeeder extends Seeder
             'email' => 'wesli@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU6'), // password
+            'password' => Hash::make('perancangPUU6'),
             'role' => 'hks',
         ]);
 
@@ -143,7 +132,7 @@ class UserSeeder extends Seeder
             'email' => 'irvan@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU7'), // password
+            'password' => Hash::make('perancangPUU7'),
             'role' => 'hks',
         ]);
 
@@ -153,7 +142,7 @@ class UserSeeder extends Seeder
             'email' => 'indira@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU8'), // password
+            'password' => Hash::make('perancangPUU8'),
             'role' => 'hks',
         ]);
 
@@ -163,7 +152,7 @@ class UserSeeder extends Seeder
             'email' => 'john@kemenkopukm.go.id',
             'email_verified_at' => now(),
             'position' => 'HKS',
-            'password' => Hash::make('perancangPUU9'), // password
+            'password' => Hash::make('perancangPUU9'),
             'role' => 'hks',
         ]);
     }

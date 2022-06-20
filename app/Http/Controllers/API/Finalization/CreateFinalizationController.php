@@ -32,10 +32,7 @@ class CreateFinalizationController extends Controller
             'footnote' => ['nullable', 'array'],
             'footnote.*.note' => ['required_with:footnote', 'string'],
 
-            'note' => [
-                Rule::requiredIf($request->type == 'finalization'), 
-                'array'
-            ],
+            'note' => ['nullable', 'array'],
             'note.*.note' => ['required_with:note', 'file'],
 
             'attachment' => ['nullable', 'array'],
