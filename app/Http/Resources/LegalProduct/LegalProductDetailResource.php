@@ -36,6 +36,7 @@ class LegalProductDetailResource extends JsonResource
             'official_memo' => FileResource::collection($this->file()->where('type', 'official_memo')->get()),
             'draft' => FileResource::collection($this->file()->where('type', 'draft')->get()),
             'sk_team' => FileResource::collection($this->file()->where('type', 'sk_team')->get()),
+            'stage_status' => new StageStatusResource($this),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

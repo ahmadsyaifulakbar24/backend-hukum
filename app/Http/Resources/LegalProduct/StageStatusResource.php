@@ -16,12 +16,19 @@ class StageStatusResource extends JsonResource
     {
         $review = $this->review();
         $review_process = ($review->count() != 0) ? round($review->sum('status') / $review->count(), 2) : 0;
+
+        $p_assignment = ($this->assignment()->count() > 0) ? 100 : 0;
+        $p_review = ( $review_process > 0) ? $review_process : 0;
+        $p_finalization = ($this->finalization_progress > 0) ? $this->finalization_progress : 0;
+        $p_determination = ($this->determination()->count() > 0) ? 100 : 0;
+        $p_total_progress = ($p_assignment + $p_review + $p_finalization + $p_determination) / 4;
         return [
             'legal_product_status' => $this->status,
-            'assignment' => ($this->assignment()->count() > 0) ? 100 : null,
-            'review' => ( $review_process > 0) ? $review_process : null,
-            'finalization' => ($this->finalization_progress > 0) ? $this->finalization_progress : null,
-            'determination' =>  ($this->determination()->count() > 0) ? 100 : null,
+            'assignment' => $p_assignment,
+            'review' => $p_review,
+            'finalization' => $p_finalization,
+            'determination' =>  $p_determination,
+            'total_progress' => $p_total_progress,
         ];
     }
 }

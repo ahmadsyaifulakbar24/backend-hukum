@@ -29,6 +29,7 @@ class LegalProductResource extends JsonResource
             'progress' => $this->progress,
             'status' => $this->status,
             'finish_date' => $this->finish_date,
+            'stage_status' => new StageStatusResource($this),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
