@@ -20,7 +20,7 @@ class TimelineResource extends JsonResource
                 'start_date' => $this->assignment_start_date,
                 'finish_date' => $this->assignment()->max('created_at'),
             ],
-            'review' => ReviewTimelineResource::collection($this->review()->orderBy('created_at', 'DESC')->get()),
+            'review' => ReviewTimelineResource::collection($this->review()->orderBy('created_at', 'ASC')->get()),
             'finalization' => [
                 'start_date' => $this->finalization_start_date,
                 'finish_date' => $this->finalization_finish_date
