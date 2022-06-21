@@ -30,6 +30,7 @@ class LegalProductResource extends JsonResource
             'status' => $this->status,
             'finish_date' => $this->finish_date,
             'stage_status' => new StageStatusResource($this),
+            'timeline' => new TimelineResource($this),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
