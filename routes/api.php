@@ -99,6 +99,7 @@ Route::middleware('auth:api')->group(function() {
         Route::post('legal_product', CreateLegalProductController::class);
         Route::patch('legal_product/{legal_product:id}', [UpdateLegalProductController::class, 'update']);
         Route::patch('legal_product/{legal_product:id}/status', [UpdateLegalProductController::class, 'status']);
+        Route::patch('legal_product/{legal_product:id}/start_step', [UpdateLegalProductController::class, 'start_step']);
         Route::delete('legal_product/{legal_product:id}', DeleteLegalProductController::class);
         Route::patch('legal_product/{legal_product:id}/finalization_progress', [UpdateLegalProductController::class, 'finalization_progress']);
         Route::get('legal_product/{legal_product:id}/stage_status', [GetLegalProductController::class, 'stage_status']);

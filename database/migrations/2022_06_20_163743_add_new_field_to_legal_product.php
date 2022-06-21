@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('legal_products', function (Blueprint $table) {
             $table->dateTime('assignment_start_date')->after('finish_date')->nullable();
+            $table->dateTime('finalization_start_date')->after('finalization_progress')->nullable();
             $table->dateTime('determination_start_date')->after('finalization_finish_date')->nullable();
         });
     }
