@@ -34,7 +34,7 @@ class GetLegalProductController extends Controller
             });
         }
 
-        if($request->user_id) {
+        if($request->created_by) {
             $legal_product->where('created_by', $request->created_by);
         }
 
