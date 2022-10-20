@@ -115,6 +115,7 @@ Route::middleware('auth:api')->group(function() {
         Route::get('assignment', [GetAssignmentController::class, 'get']);
         Route::get('assignment/{assignment:id}', [GetAssignmentController::class, 'show']);
         Route::delete('assignment/{assignment:id}', DeleteAssignmentController::class);
+        Route::get('assignment_by_legal_product', [GetAssignmentController::class, 'assignment_by_legal_product']);
     // end assigment
 
     // review

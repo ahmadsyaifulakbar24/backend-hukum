@@ -25,6 +25,11 @@ class Assignment extends Model
         return !empty($this->attributes['updated_at']) ? Carbon::parse($date)->format('Y-m-d H:i:s') : null;
     }
 
+    public function legal_product()
+    {
+        return $this->belongsTo(LegalProduct::class, 'legal_product_id');
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
