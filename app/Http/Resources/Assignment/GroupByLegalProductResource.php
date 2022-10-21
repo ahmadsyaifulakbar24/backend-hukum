@@ -15,8 +15,7 @@ class GroupByLegalProductResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'legal_product' => $this->legal_product->title,
-            'user' => $this->user->name,
+            'user' => $this->name,
             'total' => $this->total,
         ];
     }

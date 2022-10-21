@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Assignment\AssignmentResource;
 use App\Http\Resources\Assignment\GroupByLegalProductResource;
 use App\Models\Assignment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,14 +36,17 @@ class GetAssignmentController extends Controller
         ]);
         $limit = $request->input('limit', 10);
 
-        $assignment = Assignment::select(
-                        'legal_product_id',
-                        'user_id',
-                        DB::raw('count(*) as total')
+        $user_hks = User::where('role', 'hks');
+        $assignment = Assignment::rightJoinSub($user_hks, 'user_hks', function($join) {
+                        $join->on('assignments.user_id', '=', 'user_hks.id');
+                    })
+                    ->select(
+                        'name',
+                        DB::raw('count(CASE WHEN legal_product_id IS NOT NULL THEN 1 END) as total')
                     )
                     ->groupBy('user_id');
         $result = ($request->paginate) ? $assignment->paginate($limit) : $assignment->get();
-
+        return $result;
         return ResponseFormatter::success(GroupByLegalProductResource::collection($result)->response()->getData(true), 'success get assignment by legal product data');
     }
 }
