@@ -46,7 +46,6 @@ class GetAssignmentController extends Controller
                     )
                     ->groupBy('user_id');
         $result = ($request->paginate) ? $assignment->paginate($limit) : $assignment->get();
-        return $result;
         return ResponseFormatter::success(GroupByLegalProductResource::collection($result)->response()->getData(true), 'success get assignment by legal product data');
     }
 }
