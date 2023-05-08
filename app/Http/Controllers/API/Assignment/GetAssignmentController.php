@@ -41,6 +41,7 @@ class GetAssignmentController extends Controller
                         $join->on('assignments.user_id', '=', 'user_hks.id');
                     })
                     ->select(
+                        'user_hks.id as user_id',
                         'name',
                         DB::raw('count(CASE WHEN legal_product_id IS NOT NULL THEN 1 END) as total')
                     )

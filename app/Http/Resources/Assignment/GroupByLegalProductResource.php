@@ -16,6 +16,7 @@ class GroupByLegalProductResource extends JsonResource
     {
         return [
             'user' => $this->name,
+            'user_id' => $this->user_id,
             'total' => $this->total,
         ];
     }
