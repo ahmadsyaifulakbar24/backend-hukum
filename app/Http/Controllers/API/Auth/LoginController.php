@@ -21,11 +21,10 @@ class LoginController extends Controller
         ]);
         try {
             // Mengecek credential login
-            $credentials = request(['email', 'password']);
-            if (!Auth::attempt($credentials)) {
+            if (!Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 'active'])) {
                 return ResponseFormatter::error([
                     'message' => 'Unauthorized'
-                ], 'Authentication Failed', 500);
+                ], 'Authentication Failed', 401);
             }
 
             // Jika Hash atau password tidak sesuai
